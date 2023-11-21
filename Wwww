@@ -1,0 +1,86 @@
+
+#include <iostream>
+
+// Функция для определения длины строки.
+size_t strlen(const char* str) {
+    size_t length = 0;
+    
+    while (*str != '\0') {
+        ++length;
+        ++str;
+    }
+    
+    return length;
+}
+
+// Функция для копирования одной строки в другую.
+char* strcpy(char* dest, const char* src) {
+    char* originalDest = dest;
+    
+    while (*src != '\0') {
+        *dest = *src;
+        ++dest;
+        ++src;
+    }
+    
+    *dest = '\0';
+    
+    return originalDest;
+}
+
+// Функция для конкатенации двух строк.
+char* strcat(char* dest, const char* src) {
+    char* originalDest = dest;
+
+    while (*dest != '\0') {
+        ++dest;
+    }
+    
+    while (*src != '\0') {
+        *dest = *src;
+        ++dest;
+        ++src;
+    }
+    
+    *dest = '\0';
+    
+    return originalDest;
+}
+
+// Функция для сравнения двух строк.
+int strcmp(const char* str1, const char* str2) {
+    while (*str1 != '\0' && *str1 == *str2) {
+        ++str1;
+        ++str2;
+    }
+    
+    return *str1 - *str2;
+}
+
+int main() {
+    const char* str1 = "Hello";
+    const char* str2 = " World";
+    
+    char dest[20];
+    
+    std::cout << "Length of str1: " << strlen(str1) << std::endl;
+    
+    strcpy(dest, str1);
+    std::cout << "Content of dest after strcpy: " << dest << std::endl;
+    
+    strcat(dest, str2);
+    std::cout << "Content of dest after strcat: " << dest << std::endl;
+    
+    int result = strcmp(str1, str2);
+    if (result < 0) {
+        std::cout << "str1 is less than str2" << std::endl;
+    } else if (result > 0) {
+        std::cout << "str1 is greater than str2" << std::endl;
+    } else {
+        std::cout << "str1 is equal to str2" << std::endl;
+    }
+    
+    return 0;
+}
+
+
